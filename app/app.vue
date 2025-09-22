@@ -1,17 +1,17 @@
 <template>
   <div>
     <NuxtRouteAnnouncer />
-    <h1 class="text-6xl text-center font-bold" >Wanna check a github?</h1>
-
-    <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-      <legend class="fieldset-legend">Check someone</legend>
-      <input type="text" class="input"
-        v-model="login"
-        placeholder="Enter GitHub login"
-        @keyup.enter="fetchUser"
-      />
-      <p class="label">fill the login of the account you want to revue</p>
-    </fieldset>
+    <h1 class="text-6xl text-center font-bold m-16" >Wanna check a github?</h1>
+    <section class="flex justify-center p-48">
+      <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+        <legend class="fieldset-legend">Check someone</legend>
+        <input type="text" class="input"
+          v-model="login"
+          placeholder="Enter GitHub login"
+          @keyup.enter="fetchUser"
+        />
+      </fieldset>
+    </section>
 
     <div v-if="pending">Checking right now ...</div>
 
@@ -20,21 +20,7 @@
     </div>
 
     <div v-else-if="user">
-      <div class="hero bg-base-200 min-h-128">
-        <div class="hero-content flex-col lg:flex-row">
-          <img
-            :src="user.avatarUrl"
-            class="max-w-sm rounded-lg shadow-2xl"
-            :alt="user.login" width="150"
-          />
-          <div>
-            <h2 class="text-5xl font-bold">{{ user.login }}</h2>
-            <p class="py-6">
-              {{ user.name }}
-            </p>
-          </div>
-        </div>
-      </div>
+      <UserHero :user="user"/>
       <div class="repositories">
         <ul>
           <li v-for="repo in user.repositories.edges" :key="repo.name">
@@ -53,7 +39,7 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
 
-const login = ref('h3lax')       // reactive input
+const login = ref('')       // reactive input
 const user = ref<any | null>(null) // only one data ref used by template
 const pending = ref(false)
 const error = ref<any | null>(null)
