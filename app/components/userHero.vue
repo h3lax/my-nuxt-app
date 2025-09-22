@@ -6,17 +6,16 @@
             class="max-w-sm rounded-lg shadow-2xl"
             :alt="user.login" width="150"
           />
-          <div>
-            <h2 class="text-5xl font-bold">{{ user.login }}</h2>
-            <p class="py-6">
-              {{ user.name }}
-            </p>
-            <p>
+          <div class="ml-4">
+            <span class="inline-block text-nowrap">
+                <h2><span class="text-5xl font-bold mr-4">{{ user.login }}</span><span class="text-3xl">| {{ user.name }}</span></h2>
+            </span>              
+            <p class="text-sm mt-4">
               {{ user.bio }}
             </p>
           </div>
         </div>
-      </div>
+    </div>
 </template>
 
 <script lang="ts" setup>

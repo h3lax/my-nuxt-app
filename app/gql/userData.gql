@@ -10,6 +10,7 @@ query getUser($login : String!) {
           name
           description
           url
+          updatedAt
           stargazerCount
           forkCount
           primaryLanguage{

@@ -21,17 +21,11 @@
 
     <div v-else-if="user">
       <UserHero :user="user"/>
-      <div class="repositories">
-        <ul>
-          <li v-for="repo in user.repositories.edges" :key="repo.name">
-            <h3>{{ repo.node.name }}</h3>
-            <p>{{ repo.node.description }}</p>
-            <p v-if="repo.node.primaryLanguage">stack principale : {{ repo.node.primaryLanguage.name }}</p>
-            <a href="repo.node.url">{{ repo.node.url }}</a>
-            
-          </li>
-        </ul>
-      </div>
+      <section class="flex-col justify-center p-24">
+        <div v-if="user.repositories" class="card bg-base-200 shadow-xl my-4" v-for="repo in user.repositories.edges" :key="repo.name">
+            <RepositoryCard :repo="repo.node" />
+        </div>
+      </section>
     </div>
   </div>
 </template>
@@ -77,11 +71,3 @@ const fetchUser = async () => {
 onMounted(() => fetchUser())
 </script>
 
-<style>
-.error {
-  color: white;
-  margin: 1em 0;
-  background-color: brown;
-  padding: 20px;
-}
-</style>
