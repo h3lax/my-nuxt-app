@@ -1,8 +1,15 @@
 import { defineNuxtConfig } from 'nuxt/config'
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
   modules: ['nuxt-graphql-client'],
   compatibilityDate: '2025-09-19',
+  css: ['~/assets/app.css'],
+  vite: {
+    plugins: [
+      tailwindcss(),
+    ],
+  },
   'graphql-client': {
     watch: true,
     autoImport: true,

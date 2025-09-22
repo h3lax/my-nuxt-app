@@ -4,5 +4,19 @@ query getUser($login : String!) {
     name
     avatarUrl
     bio
+    repositories(first: 10, privacy: PUBLIC, orderBy: {field: UPDATED_AT, direction: DESC}) {
+      edges {
+        node {
+          name
+          description
+          url
+          stargazerCount
+          forkCount
+          primaryLanguage{
+            name
+          }
+        }
+      }
+    }
   }
 }
