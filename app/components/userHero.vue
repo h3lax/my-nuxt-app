@@ -1,5 +1,5 @@
 <template>
-    <div class="hero bg-base-200 min-h-128">
+    <div class="hero bg-base-200 min-h-96">
         <div class="hero-content flex-col lg:flex-row">
           <img
             :src="user.avatarUrl"

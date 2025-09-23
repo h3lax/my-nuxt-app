@@ -21,6 +21,7 @@
 
     <div v-else-if="user">
       <UserHero :user="user"/>
+      <StatBar />
       <section class="flex-col justify-center p-24">
         <div v-if="user.repositories" class="card bg-base-200 shadow-xl my-4" v-for="repo in user.repositories.edges" :key="repo.name">
             <RepositoryCard :repo="repo.node" />
