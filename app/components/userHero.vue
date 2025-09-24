@@ -1,5 +1,5 @@
 <template>
-    <div class="hero bg-base-200 min-h-96">
+    <div class="hero bg-base-200 min-h-64 pt-16">
         <div class="hero-content flex-col lg:flex-row">
           <img
             :src="user.avatarUrl"
@@ -19,13 +19,7 @@
 </template>
 
 <script lang="ts" setup>
-interface User {
-  login: string
-  name?: string
-  bio?: string
-  avatarUrl: string
-}
-
+import type { User } from '~/types/github'
 
 defineProps<{
   user: User | null

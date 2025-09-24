@@ -18,24 +18,23 @@
 </template>
 
 <script lang="ts" setup>
-interface Language {
-  name: string
-  color: string
-}
 
-interface Repository {
-  name: string
-  description?: string
-  url: string
-  stargazerCount: number
-  forkCount: number
-  primaryLanguage?: Language | null
-}
+  interface Language {
+    name: string
+    color: string
+  }
 
-defineProps<{
-  repo: Repository | null
-}>()
+  interface Repository {
+    name: string
+    description?: string
+    url: string
+    stargazerCount: number
+    forkCount: number
+    primaryLanguage?: Language | null
+  }
 
-
+  defineProps<{
+    repo: Repository | null
+  }>()
 
 </script>

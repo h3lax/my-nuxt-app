@@ -4,7 +4,20 @@ query getUser($login : String!) {
     name
     avatarUrl
     bio
+    following {
+      totalCount
+    }
+    followers {
+      totalCount
+    }
+    contributionsCollection{
+      totalCommitContributions
+    }
+    starredRepositories {
+      totalCount
+    }
     repositories(first: 10, privacy: PUBLIC, orderBy: {field: UPDATED_AT, direction: DESC}) {
+      totalCount
       edges {
         node {
           name
@@ -15,6 +28,7 @@ query getUser($login : String!) {
           forkCount
           primaryLanguage{
             name
+            color
           }
         }
       }
