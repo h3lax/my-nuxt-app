@@ -30,6 +30,15 @@ query getUser($login : String!) {
             name
             color
           }
+          defaultBranchRef {
+            target {
+              ... on Commit {
+                history {
+                  totalCount
+                }
+              }
+            }
+          }
         }
       }
     }

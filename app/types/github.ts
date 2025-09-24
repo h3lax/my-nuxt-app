@@ -11,6 +11,7 @@ export interface Repository {
   stargazerCount: number
   forkCount: number
   primaryLanguage?: Language | null
+  totalCommits: number
 }
 
 export interface User {
