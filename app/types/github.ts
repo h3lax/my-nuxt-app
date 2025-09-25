@@ -8,10 +8,10 @@ export interface Repository {
   description?: string
   url: string
   updatedAt: string
-  stargazerCount: number
-  forkCount: number
+  stargazerCount: string
+  forkCount: string
   primaryLanguage?: Language | null
-  totalCommits: number
+  totalCommits: string
 }
 
 export interface User {
@@ -21,12 +21,20 @@ export interface User {
   bio?: string
 
   // flattened "totals"
-  totalFollowing: number
-  totalFollowers: number
-  totalContributions: number
-  totalStars: number
-  totalRepos: number
+  totalFollowing: string
+  totalFollowers: string
+  totalContributions: string
+  totalStars: string
+  totalRepos: string
 
   // direct list of repos
   repositories: Repository[]
+}
+
+export interface Stat {
+  d: string,
+  textColor: string,
+  topText: string,
+  lowerText: string,
+  value: string,
 }
