@@ -7,7 +7,14 @@
             <input type="checkbox" value="valentine" class="toggle theme-controller" />
         </div>
         <div class="flex-none">
-            <input type="text" class="input" placeholder="Enter GitHub login">
+            <input type="text" class="input" placeholder="Enter GitHub login"
+            @keyup.enter="goToUser"
+            v-model="login"
+            >
         </div>
     </div>
 </template>
+
+<script lang="ts" setup>
+    const { login, goToUser } = useLogin()
+</script>

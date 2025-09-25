@@ -18,12 +18,5 @@
 </template>
 
 <script setup lang="ts">
-    const login = ref('')
-
-    const goToUser = () => {
-    if (login.value.trim()) {
-        // navigate to user page with the login as param
-        navigateTo(`/checking/${login.value}`)
-    }
-    }
+    const { login, goToUser } = useLogin()
 </script>

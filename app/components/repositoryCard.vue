@@ -1,20 +1,23 @@
 <template>
-      <div class="card-body flex-row justify-between">
-        <div class="w-5/12">
+      <div class="card-body bg-base flex-row justify-between gap-4 h-48 items-center">
+        <div class="w-3/12">
           <h3 class="card-title text-lg">
-          <a :href="repo.url" target="_blank" class="link link-hover">
-              {{ repo.name }}
+          <a :href="repo?.url" target="_blank" class="link link-hover">
+              {{ repo?.name }}
           </a>
           </h3>
-          <p class="text-sm text-gray-400">{{ repo.description }}</p>
+          <p class="text-sm text-gray-400">{{ repo?.description }}</p>
 
           <div class="flex items-center gap-4 mt-2">
-            <span v-if="repo.primaryLanguage" class="badge" :style="{ backgroundColor: repo.primaryLanguage.color }">
+            <span v-if="repo?.primaryLanguage" class="badge" :style="{ backgroundColor: repo.primaryLanguage.color }">
                 {{ repo.primaryLanguage.name }}
             </span>
           </div>
         </div>
-        <div class="stats shadow">
+        <div class="w-1/12 p-8">
+          <div v-html="getTheGoodLogo(repo?.primaryLanguage?.name ?? '')"></div>
+        </div>
+        <div class="stats shadow w-7/12">
           <Stat :s="lastUpdate" />
           <Stat :s="stars" />
           <Stat :s="forks" />
@@ -25,6 +28,7 @@
 
 <script lang="ts" setup>
   import type { Language, Repository, Stat } from '~/types/github'
+  import { getTheGoodLogo } from '~/services/getTheGoodLogo';
 
   const props = defineProps<{
     repo: Repository | null

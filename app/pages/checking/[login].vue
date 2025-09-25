@@ -1,5 +1,5 @@
 <template>
-    <div v-if="pending">Checking right now ...</div>
+    <div class="text-6xl text-center font-bold m-16" v-if="pending">Checking right now ...</div>
 
     <div v-else-if="error" class="error">
       Error: <pre>{{ extractError(error) }}</pre>
@@ -28,7 +28,7 @@
 
     // Pour Nuxt attention à utiliser pluôt que OnMounted useAsyncData (runs SSR + CSR)
     const { data: user, pending, error } = await useAsyncData(
-        'user', // ???
+        () => `user-${route.params.login}`, // ???
         async () => {
             const login = route.params.login as string
             if (!login) return null
@@ -36,7 +36,6 @@
             const result = await useAsyncGql('getUser', { login })
             const raw = result?.data?.value ?? result?.data ?? null
             const u = raw?.user
-            console.log(u)
 
             if (!u) return null
 
