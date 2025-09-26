@@ -42,6 +42,7 @@
             return {
                 login: u.login,
                 name: u.name,
+                url: u.url,
                 avatarUrl: u.avatarUrl,
                 bio: u.bio,
                 totalFollowing: u.following.totalCount,

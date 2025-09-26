@@ -3,6 +3,7 @@ query getUser($login : String!) {
     login
     name
     avatarUrl
+    url
     bio
     following {
       totalCount
